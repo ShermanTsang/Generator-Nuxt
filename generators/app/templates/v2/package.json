@@ -1,0 +1,50 @@
+{
+  "name": "<%= name %>",
+  "title": "<%= name %>",
+  "version": "3.3.0",
+  "description": "<%= name %>",
+  "author": "ShareManT",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate",
+    "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
+    "precommit": "npm run lint",
+    "analyze": "nuxt build --analyze",
+    "pm2": "nuxt build && pm2 start",
+    "build:modern": "nuxt build --modern=server",
+    "start:modern": "nuxt start --modern=server"
+  },
+  "dependencies": {
+    "@cloudbase/vue-provider": "^0.5.1",
+    "@nuxtjs/axios": "^5.13.6",
+    "core-js": "^3.15.1",
+    "crypto": "^1.0.1",
+    "dayjs": "^1.8.16",
+    "lodash": "^4.17.11",
+    "nuxt": "^2.15.7",
+    "vue-lazyload": "^1.2.6"
+  },
+  "devDependencies": {
+    "@babel/eslint-parser": "^7.14.7",
+    "@nuxtjs/eslint-config": "^8.0.0",
+    "@nuxtjs/eslint-module": "^3.0.2",
+    "@nuxtjs/tailwindcss": "^4.2.1",
+    "eslint": "^8.5.0",
+    "eslint-plugin-nuxt": "^3.1.0",
+    "eslint-plugin-vue": "^8.2.0",
+    "sass": "^1.26.10",
+    "sass-loader": "10.1.1"
+  },
+  "postcss": {
+    "plugins": {
+      "autoprefixer": {}
+    }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions"
+  ]
+}

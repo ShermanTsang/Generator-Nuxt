@@ -1,0 +1,88 @@
+html {
+  font-family: $font-family-base;
+  font-size: 16px;
+  word-spacing: 1px;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+
+  a {
+    color: #666;
+    text-decoration: none;
+  }
+
+  iframe {
+    border: none;
+  }
+
+  img {
+    border: none;
+  }
+
+
+  *,
+  *:before,
+  *:after {
+    box-sizing: border-box;
+    margin: 0;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px
+  }
+
+  ::-webkit-scrollbar:horizontal {
+    height: 6px
+  }
+
+  ::-webkit-scrollbar-track {
+    background-color: transparent;
+    height: 0
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: #aaa;
+    border-radius: 6px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: #378fff
+  }
+
+  ::-webkit-input-placeholder {
+    letter-spacing: 1px;
+    font-size: .95rem;
+    color: #ccc;
+  }
+
+  img[src=""], img:not([src]) {
+    opacity: 0;
+  }
+
+  input {
+    background: none;
+    outline: none;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid #eee;
+  }
+
+  img[lazy=loading] {
+    transition: opacity .25s linear;
+    animation: loading .5s ease-in-out;
+    object-fit: cover;
+  }
+
+  img[lazy=error] {
+    /*your style here*/
+  }
+
+  img[lazy=loaded] {
+    /*your style here*/
+  }
+
+}
