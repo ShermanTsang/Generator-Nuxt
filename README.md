@@ -30,7 +30,7 @@ pre-installed [node.js](https://nodejs.org/)).
 
 ```bash
 npm install -g yo
-npm install -g generator-sherman-uniapp
+npm install -g generator-sherman-nuxt
 ```
 
 Then generate your new project:
