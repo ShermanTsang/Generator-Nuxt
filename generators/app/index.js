@@ -5,21 +5,6 @@ const chalk = require("chalk");
 const Generator = require("yeoman-generator");
 const mkdirp = require("mkdirp");
 
-function fileMapper(templateFiles, filePath) {
-  const files = fs.readdirSync(filePath);
-  files.forEach(function(filename) {
-    const fileDir = path.join(filePath, filename);
-    const stats = fs.statSync(fileDir);
-    if (stats.isFile()) {
-      templateFiles.push(fileDir);
-    }
-
-    if (stats.isDirectory()) {
-      fileMapper(fileDir);
-    }
-  });
-}
-
 module.exports = class extends Generator {
   initializing() {
     this.props = {};
@@ -45,12 +30,12 @@ module.exports = class extends Generator {
         choices: [
           {
             key: "v2",
-            name: "Nuxt2.x + Webpack",
+            name: "Nuxt2.x + Webpack + JavaScript",
             value: "v2"
           },
           {
             key: "v3",
-            name: "Nuxt3.x + Vite + Typescript",
+            name: "Nuxt3.x + Vite + TypeScript",
             value: "v3"
           }
         ]
@@ -80,13 +65,13 @@ module.exports = class extends Generator {
         this.log(
           `${chalk.bgGreen("[ Info ]")} create ${chalk.blue(
             this.destinationPath()
-          )} director`
+          )} director\n`
         );
         this.destinationRoot(this.destinationPath(this.props.name));
         this.log(
           `${chalk.bgYellow("[ Notice ]")} set destination path to ${chalk.blue(
             this.destinationPath()
-          )}`
+          )}\n`
         );
       }
     }
@@ -112,7 +97,22 @@ module.exports = class extends Generator {
       fs.accessSync(templatePath);
       const templateFiles = [];
 
-      fileMapper(templateFiles, templatePath);
+      function fileMapper(filePath) {
+        const files = fs.readdirSync(filePath);
+        files.forEach(function(filename) {
+          const fileDir = path.join(filePath, filename);
+          const stats = fs.statSync(fileDir);
+          if (stats.isFile()) {
+            templateFiles.push(fileDir);
+          }
+
+          if (stats.isDirectory()) {
+            fileMapper(fileDir);
+          }
+        });
+      }
+
+      fileMapper(templatePath);
 
       templateFiles.forEach(filePath => {
         const fileBarePath = filePath.replace(
@@ -127,7 +127,8 @@ module.exports = class extends Generator {
           this.props
         );
       });
-    } catch {
+    } catch (e) {
+      console.log(e);
       this.log(
         `${chalk.bgRed("[ Error ]")} target template director is ${chalk.blue(
           templatePath

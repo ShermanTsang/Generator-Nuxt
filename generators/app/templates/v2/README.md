@@ -1,6 +1,6 @@
-# <%= projectName %>
+# <%= name %>
 
-> <%= projectName %>.
+> <%= name %>.
 
 ## Build Setup
 
